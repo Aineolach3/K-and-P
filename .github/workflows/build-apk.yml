@@ -4,6 +4,9 @@ on:
   push:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -31,3 +34,14 @@ jobs:
         with:
           name: korzina-i-plita-apk
           path: korzina-i-plita.apk
+
+      - name: Опубликовать в Releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="v1.0.${{ github.run_number }}"
+          gh release create "$TAG" korzina-i-plita.apk \
+            --repo "${{ github.repository }}" \
+            --title "Корзина и плита $TAG" \
+            --notes "Скачайте korzina-i-plita.apk и откройте на телефоне (Android 10+). Обновление ставится поверх, данные сохраняются." \
+            --latest
