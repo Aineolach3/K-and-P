@@ -458,8 +458,48 @@ body:has(.drawer) #botRoot{right:480px}
 #botRoot.open .botbub{display:none}
 @media (max-width:900px){#botRoot{bottom:calc(78px + env(safe-area-inset-bottom,0px));right:max(10px,env(safe-area-inset-right,0px))}.botchef{width:calc(70px * var(--bs,1));height:calc(76px * var(--bs,1))}body:has(.drawer) #botRoot{display:none}.botpanel{height:min(520px,calc(100vh - 200px))}}
 @media (prefers-reduced-motion:reduce){.chef *{animation:none!important}}
+.mnav{display:none}
+@keyframes sheetUp{from{transform:translateY(100%)}to{transform:none}}
+@keyframes fadeBg{from{opacity:0}to{opacity:1}}
+.msov{position:fixed;inset:0;z-index:48;background:rgb(0 0 0 / .6);animation:fadeBg .2s ease-out;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+.mss{position:fixed;left:0;right:0;bottom:0;z-index:49;background:var(--surface);border-radius:22px 22px 0 0;border-top:1px solid var(--line2);max-height:88vh;overflow:auto;padding:8px max(16px,env(safe-area-inset-left,0px)) calc(18px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-right,0px));animation:sheetUp .28s cubic-bezier(.2,.9,.3,1);box-shadow:0 -20px 60px rgb(0 0 0 / .5);touch-action:pan-y}
+.mss .hdl{width:44px;height:5px;border-radius:9px;background:var(--line2);margin:4px auto 12px}
+.mss .mhead{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.mss .mhead img{width:44px;height:44px;border-radius:12px}
+.mss .mhead b{font-family:var(--display);font-size:1.15rem;display:block}
+.mss .mgl{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);font-weight:600;margin:14px 2px 8px}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mcard{position:relative;display:grid;gap:6px;align-content:start;text-align:left;border:1px solid var(--line);background:var(--sunk);border-radius:16px;padding:12px;cursor:pointer;min-height:96px;transition:transform .12s}
+.mcard:active{transform:scale(.97)}
+.mcard[aria-current="page"]{border-color:var(--acc);background:var(--tint)}
+.mcard .mic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--mc) 22%,transparent);color:var(--mc)}
+.mcard .mic svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.mcard b{font-size:.95rem;line-height:1.2}
+.mcard small{color:var(--muted);font-size:.74rem;line-height:1.3}
+.mcard .mbd{position:absolute;top:10px;right:10px;background:var(--warn);color:#111317;font-size:.72rem;font-weight:800;border-radius:99px;padding:1px 8px}
+.mqa{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.mqa button{display:grid;justify-items:center;gap:6px;border:0;background:none;color:var(--fg);font-size:.72rem;cursor:pointer;padding:4px 0}
+.mqa .qi{width:50px;height:50px;border-radius:16px;display:grid;place-items:center;background:var(--sunk);border:1px solid var(--line);font-size:1.3rem}
+.mqa .qi.pri{background:var(--acc);border-color:var(--acc);color:var(--on-acc)}
 @media (max-width:1100px){.split{grid-template-columns:1fr}.split>.panel:first-child{position:static}}
 @media (max-width:900px){
+  .side{display:none!important}
+  .mnav{display:grid;grid-template-columns:repeat(5,1fr);align-items:end;position:fixed;left:0;right:0;bottom:0;z-index:47;padding:6px max(6px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(6px,env(safe-area-inset-left,0px));background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+  .mnav .mt{display:grid;justify-items:center;gap:3px;border:0;background:none;color:var(--muted);font-size:.68rem;font-weight:600;padding:6px 0 2px;cursor:pointer;position:relative}
+  .mnav .mt svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .mnav .mt[aria-current="page"]{color:var(--acc)}
+  .mnav .mt[aria-current="page"]::before{content:"";position:absolute;top:-6px;width:28px;height:3px;border-radius:0 0 4px 4px;background:var(--acc)}
+  .mnav .mt .nb{position:absolute;top:2px;left:calc(50% + 6px);background:var(--warn);color:#111317;font-size:.62rem;font-weight:800;border-radius:99px;padding:0 5px;line-height:1.5}
+  .mnav .mmenu{display:grid;justify-items:center;gap:3px;border:0;background:none;color:var(--fg);font-size:.68rem;font-weight:700;cursor:pointer;padding:0}
+  .mnav .mmenu .mb{width:56px;height:56px;margin-top:-26px;border-radius:50%;display:grid;place-items:center;background:var(--acc);color:var(--on-acc);box-shadow:0 8px 22px color-mix(in srgb,var(--acc) 45%,transparent),0 0 0 5px var(--bg)}
+  .mnav .mmenu .mb svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round}
+  .demo{flex-wrap:wrap}
+  .demo span{flex:1 1 200px}
+  .topin{padding-block:12px 10px}
+  .topin .ttl p{display:none}
+  .topin [data-act="add"],#chipCu{display:none}
+  .topin{flex-wrap:nowrap}
+  .ttl{flex:1}
   .app{grid-template-columns:minmax(0,1fr)}
   .side,nav.tabs{min-width:0}
   .side{position:fixed;top:auto;left:0;right:0;bottom:0;height:auto;flex-direction:row;gap:0;padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));border-right:0;border-top:1px solid var(--line);z-index:12;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
@@ -469,7 +509,7 @@ body:has(.drawer) #botRoot{right:480px}
   nav.tabs button .lbl{flex:none;white-space:normal;line-height:1.15}
   nav.tabs button svg{width:21px;height:21px}
   nav.tabs button[aria-selected="true"]{background:none}
-  main{padding-bottom:110px}
+  main{padding-bottom:120px}
   .search{min-width:0}.search span,.search kbd{display:none}
   .drawer{top:auto;max-height:92vh;border-left:0;border-top:1px solid var(--line2);border-radius:16px 16px 0 0;animation:dup .22s ease-out}
   @keyframes dup{from{transform:translateY(30px);opacity:.4}}
@@ -503,6 +543,8 @@ body:has(.drawer) #botRoot{right:480px}
     <main class="wrap" id="main"></main>
   </div>
 </div>
+<nav id="mnav" class="mnav" aria-label="Разделы"></nav>
+<div id="msheet"></div>
 <div id="drawer"></div>
 <div id="palette"></div>
 <div id="modal"></div>
@@ -1694,6 +1736,7 @@ function render(){
   const dbs=$('#dbState');if(dbs)dbs.textContent=dbStateText();
   const grant=ui.dbGrant?`<div class="demo"><b style="color:var(--warn);flex:none">База</b><span style="flex:1">Файл базы «${esc(ui.dbGrant.name)}» подключён. Браузер просит подтвердить доступ после перезапуска.</span><button class="btn sm pri" data-act="db-grant">Открыть базу</button></div>`:'';
   const demo=grant+(isDemo()?`<div class="demo"><b style="color:var(--warn);flex:none">Пример</b><span>Пока вы ничего не добавили, статистика показана на примерных покупках. Добавьте первую покупку — пример исчезнет.</span><button class="btn sm" data-act="demo-off" style="margin-left:auto;flex:none">Убрать пример</button></div>`:'');
+  renderMnav();
   const mainEl=$('#main');if(ui.lastTab!==ui.tab+(ui.recipe||'')){mainEl.classList.add('anim');clearTimeout(ui.animT);ui.animT=setTimeout(()=>mainEl.classList.remove('anim'),1600);ui.lastTab=ui.tab+(ui.recipe||'')}
   $('#main').innerHTML=demo+({home:vHome,buy:vBuy,prices:vPrices,cook:vCook,diary:vDiary,fridge:vFridge,plan:vPlan,keep:vKeep}[ui.tab])();
   afterRender();
@@ -1988,6 +2031,30 @@ function drawCook(){
 }
 function tick(){if(CK.t)clearInterval(CK.t);CK.t=null;if(!CK.run)return;CK.t=setInterval(()=>{CK.left=Math.max(0,CK.left-1);const tv=$('#ckTv');if(tv)tv.textContent=mmss(CK.left);if(CK.left===0){CK.run=false;CK.done=true;clearInterval(CK.t);CK.t=null;beep();toast('Шаг '+(CK.i+1)+' готов');drawCook()}},1000)}
 document.addEventListener('keydown',e=>{if($('#shopEl')&&e.key==='Escape'){shopClose();render();e.stopImmediatePropagation();return}if(!CK)return;if(e.key==='Escape'){closeCook();e.stopImmediatePropagation()}else if(e.key==='ArrowRight'){const b=$('[data-ck="next"]');b&&b.click()}else if(e.key==='ArrowLeft'){const b=$('[data-ck="prev"]');b&&!b.disabled&&b.click()}else if(e.key===' '){const b=$('[data-ck="tgl"]');if(b){e.preventDefault();b.click()}}},true);
+
+/* ===================== Мобильное меню ===================== */
+const MCOL={home:'#5fb3d9',buy:'#e0675c',prices:'#f0b04a',cook:'#5fd08f',diary:'#a78bfa',fridge:'#5fd3d5',plan:'#f472b6',keep:'#c9a06a'};
+const MAIN4=['home','buy','cook','fridge'];
+function navBadge(k){if(k==='fridge')return stockAlerts().length;if(k==='buy')return 0;return 0}
+function renderMnav(){const el=$('#mnav');if(!el)return;const t=(k)=>{const T=TABS.find(x=>x[0]===k);const short={home:'Обзор',buy:'Покупки',cook:'Готовить',fridge:'Холодильник'}[k]||T[1];const bd=navBadge(k);return `<button class="mt" data-act="tab" data-v="${k}" ${ui.tab===k?'aria-current="page"':''}><svg viewBox="0 0 24 24" aria-hidden="true">${IC[k]}</svg>${bd?`<span class="nb">${bd}</span>`:''}<span>${short}</span></button>`};
+  const other=!MAIN4.includes(ui.tab);
+  el.innerHTML=t('home')+t('buy')+`<button class="mmenu" data-act="msheet" aria-label="Все разделы"><span class="mb"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span><span style="color:${other?'var(--acc)':'inherit'}">${other?esc(TABS.find(x=>x[0]===ui.tab)[1].split(' ')[0]):'Меню'}</span></button>`+t('cook')+t('fridge')}
+function openSheet(){const sl=S.settings.shop?S.settings.shop.items.filter(i=>!i.done).length:0;const al=stockAlerts().length;const sub={home:'Бюджет и траты',buy:'Журнал покупок',prices:'Где дешевле',cook:'Блюда из продуктов',diary:'Калории и вес',fridge:al?'Заканчивается: '+al:'Что есть дома',plan:'Меню и список',keep:'Сроки и советы'};
+  const card=k=>{const T=TABS.find(x=>x[0]===k);const bd=k==='fridge'?al+(sl?0:0):0;return `<button class="mcard" style="--mc:${MCOL[k]}" data-ms="${k}" ${ui.tab===k?'aria-current="page"':''}><span class="mic"><svg viewBox="0 0 24 24">${IC[k]}</svg></span><b>${T[1]}</b><small>${sub[k]}</small>${bd?`<span class="mbd">${bd}</span>`:''}</button>`};
+  $('#msheet').innerHTML=`<div class="msov" data-ms="x"></div><div class="mss" role="dialog" aria-modal="true" aria-label="Все разделы"><div class="hdl"></div>
+   <div class="mhead"><img src="${LOGO}" alt=""><div style="flex:1;min-width:0"><b>Корзина и плита</b><span class="hint">${esc(CUISINES[S.settings.cuisine||'ru'].name)} кухня · ${S.settings.goal==='lose'?'похудение':'набор веса'}</span></div><button class="iconbtn" data-ms="x" aria-label="Закрыть">×</button></div>
+   <div class="mqa"><button data-ms="q-add"><span class="qi pri">＋</span>Покупка</button><button data-ms="q-shop"><span class="qi">🛒</span>${sl?'Список · '+sl:'В магазин'}</button><button data-ms="q-bot"><span class="qi">👨‍🍳</span>${esc(botName())}</button><button data-ms="q-set"><span class="qi">⚙</span>Настройки</button></div>
+   ${NAV.map(([g,ks])=>`<div class="mgl">${g}</div><div class="mgrid">${ks.map(card).join('')}</div>`).join('')}
+   <div class="mqa" style="margin-top:14px;grid-template-columns:1fr 1fr"><button data-ms="q-search" style="grid-auto-flow:column;justify-content:center;gap:8px;border:1px solid var(--line);border-radius:12px;padding:10px">🔍 Поиск по приложению</button><button data-ms="q-calc" style="grid-auto-flow:column;justify-content:center;gap:8px;border:1px solid var(--line);border-radius:12px;padding:10px">⚖ Что выгоднее?</button></div>
+  </div>`;
+  const box=$('#msheet');const sh=box.querySelector('.mss');
+  box.onclick=e=>{const b=e.target.closest('[data-ms]');if(!b)return;const v=b.dataset.ms;closeSheet();
+    if(v==='x')return;if(v==='q-add')return openDrawer();if(v==='q-shop')return shopStart();if(v==='q-bot'){if(!botOn())botToggle(true);return botOpen()}if(v==='q-set')return openSettings(false);if(v==='q-search')return openPalette();if(v==='q-calc')return openCalc();go(v)};
+  let y0=null,dy=0;sh.addEventListener('touchstart',e=>{if(sh.scrollTop>0)return;y0=e.touches[0].clientY;dy=0;sh.style.transition='none'},{passive:true});
+  sh.addEventListener('touchmove',e=>{if(y0==null)return;dy=Math.max(0,e.touches[0].clientY-y0);sh.style.transform=`translateY(${dy}px)`},{passive:true});
+  sh.addEventListener('touchend',()=>{if(y0==null)return;sh.style.transition='transform .2s';if(dy>90)closeSheet();else sh.style.transform='';y0=null});
+}
+function closeSheet(){$('#msheet').innerHTML=''}
 
 /* --- Обзор --- */
 function vHome(){
@@ -2831,6 +2898,7 @@ document.addEventListener('click',e=>{
     case 'shop-open':drawShop();break;
     case 'cooked':openCooked(v);break;
     case 'bot-toggle':botToggle(!botOn());break;
+    case 'msheet':openSheet();break;
     case 'sug':{const h=habits();const p=h&&h.prod.find(x=>x.t===v);shopAdd(v,p?p.g:defG(v));saveSettings();render();toast(tName(v)+' — в списке');break}
     case 'sugall':{const sg=buySuggest();sg.forEach(x=>shopAdd(x.t,x.g));saveSettings();render();toast('Добавлено в список: '+sg.length);break}
     case 'bpref':ui.bpref=!ui.bpref;ui.blim=24;render();break;
@@ -2921,7 +2989,7 @@ function closePalette(){$('#palette').innerHTML=''}
 document.addEventListener('keydown',e=>{
   const typing=/^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName);
   if((e.ctrlKey||e.metaKey)&&(e.key==='k'||e.key==='л'||e.key==='K')){e.preventDefault();$('#palette').innerHTML?closePalette():openPalette();return}
-  if(e.key==='Escape'){if($('#palette').innerHTML)closePalette();else if(ui.drawer)closeDrawer();else if($('#modal').innerHTML&&S.settings.cuisine){$('#modal').innerHTML='';render()}return}
+  if(e.key==='Escape'){if($('#msheet').innerHTML){closeSheet();return}if($('#palette').innerHTML)closePalette();else if(ui.drawer)closeDrawer();else if($('#modal').innerHTML&&S.settings.cuisine){$('#modal').innerHTML='';render()}return}
   if(typing||e.ctrlKey||e.metaKey||e.altKey||$('#modal').innerHTML||$('#palette').innerHTML||ui.drawer)return;
   if(e.key==='n'||e.key==='т'){e.preventDefault();openDrawer()}
   else if(e.key==='/'){e.preventDefault();openPalette()}
@@ -3113,6 +3181,7 @@ const _toast=toast;toast=function(t,label,fn){_toast(t,label,fn);if(!botOn())ret
 setTimeout(botInit,900);
 
 window.__back=function(){
+  if($('#msheet').innerHTML){closeSheet();return true}
   if($('#palette').innerHTML){closePalette();return true}
   if($('#calcEl')){$('#calcEl').remove();return true}
   if(typeof CK!=='undefined'&&CK){closeCook();return true}
